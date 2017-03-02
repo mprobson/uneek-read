@@ -33,7 +33,9 @@ int main (int argc, char** argv) {
     }
 
     while (getline(file, line)) {
+#ifdef DEBUG
       cout << "Line:   " << line << endl;
+#endif
 
       // TODO better name
       istringstream iss(line);
@@ -43,8 +45,9 @@ int main (int argc, char** argv) {
         continue;
       }
 
-      // DEBUG
+#ifdef DEBUG
       cout << "Before: " << token << endl;
+#endif
 
       // concat
       // TODO make delim param
@@ -52,8 +55,9 @@ int main (int argc, char** argv) {
       // TODO make prefix param
       clean = token.substr(14, end - 14);
 
-      // DEBUG
+#ifdef DEBUG
       cout << "During: " << clean << endl;
+#endif
 
       size_t pos = -1;
       while ((pos = clean.find(':')) != string::npos) {
@@ -66,8 +70,9 @@ int main (int argc, char** argv) {
       value = stoull(clean);
       // TODO error handling
 
-      // DEBUG
+#ifdef DEBUG
       cout << "After:  " << value << endl;
+#endif
 
       // add to set
       if (fileNo == 1) {

@@ -6,7 +6,7 @@
 
 using namespace std;
 
-// TODO write has on : sep val directly?
+// TODO write hash on : sep val directly?
 
 string parse(string token) {
 }
@@ -17,7 +17,6 @@ int main (int argc, char** argv) {
     cout << "You must supply two file names: ./pgm file1 file2" << endl;
     return 0;
   }
-
 
   // TODO construct on heap
   unordered_set<size_t> genes;

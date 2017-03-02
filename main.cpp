@@ -8,9 +8,6 @@ using namespace std;
 
 // TODO write hash on : sep val directly?
 
-string parse(string token) {
-}
-
 int main (int argc, char** argv) {
   if (argc < 3) {
     // Should this be cerr?

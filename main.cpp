@@ -8,6 +8,9 @@ using namespace std;
 
 // TODO write has on : sep val directly?
 
+string parse(string token) {
+}
+
 int main (int argc, char** argv) {
   if (argc < 3) {
     // Should this be cerr?
@@ -19,62 +22,71 @@ int main (int argc, char** argv) {
   // TODO construct on heap
   unordered_set<size_t> genes;
 
-  ifstream file (argv[1]);
-
-  if (!file.is_open()) {
-    // Should this be cerr?
-    cout << "Unable to open file " << argv[0] << endl;
-    return 0;
-  }
+  ifstream file;
 
   string line, token, clean;
+  size_t value;
 
-  while (getline(file, line)) {
-    cout << "Line:   " << line << endl;
+  for (int fileNo = 1; fileNo < argc; fileNo++) {
+    file.open(argv[fileNo]);
 
-    istringstream iss(line);
-
-    if (!(iss >> token)) {
-      cout << "Could not process token in line: " << line;
+    if (!file.is_open()) {
+      // Should this be cerr?
+      cout << "Unable to open file " << argv[fileNo] << endl;
       continue;
     }
 
-    // DEBUG
-    cout << "Before: " << token << endl;
+    while (getline(file, line)) {
+      cout << "Line:   " << line << endl;
 
-    // concat
-    // TODO make delim param
-    size_t end = token.find('#');
-    // TODO make prefix param
-    clean = token.substr(14, end - 14);
+      // TODO better name
+      istringstream iss(line);
 
-    // DEBUG
-    cout << "During: " << clean << endl;
+      if (!(iss >> token)) {
+        cout << "Could not process token in line: " << line;
+        continue;
+      }
 
-    size_t pos = -1;
-    while ((pos = clean.find(':')) != string::npos) {
-      clean.erase(pos, 1);
+      // DEBUG
+      cout << "Before: " << token << endl;
+
+      // concat
+      // TODO make delim param
+      size_t end = token.find('#');
+      // TODO make prefix param
+      clean = token.substr(14, end - 14);
+
+      // DEBUG
+      cout << "During: " << clean << endl;
+
+      size_t pos = -1;
+      while ((pos = clean.find(':')) != string::npos) {
+        clean.erase(pos, 1);
+      }
+
+      // TODO better name
+      istringstream iss2(clean);
+      //clean >> value;
+      value = stoull(clean);
+      // TODO error handling
+
+      // DEBUG
+      cout << "After:  " << value << endl;
+
+      // add to set
+      if (fileNo == 1) {
+        genes.insert(value);
+      }
+      else /* fileNo > 1 */ {
+        if (genes.count(value) >= 1) {
+	  cout << value << endl;
+	}
+      }
     }
 
-    // DEBUG
-    cout << "After:  " << clean << endl;
-
-    // add to set
-    genes.insert(clean);
-
-    // advance stream to next line
-
+    // close file
+    file.close();
   }
 
-  // close file1
-  file.close();
-
-  // open  file2
-  file.open(argv[2]);
-
-  for (int line = 0; line < 10 ; line++) {
-    // read line
-    // concat
-    // check in set
-  }
+  return 0;
 }

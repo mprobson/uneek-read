@@ -64,11 +64,8 @@ int main (int argc, char** argv) {
         clean.erase(pos, 1);
       }
 
-      // TODO better name
-      istringstream iss2(clean);
-      //clean >> value;
-      value = stoull(clean);
       // TODO error handling
+      value = stoull(clean);
 
 #ifdef DEBUG
       cout << "After:  " << value << endl;

@@ -64,8 +64,18 @@ int main (int argc, char** argv) {
         clean.erase(pos, 1);
       }
 
+      // Grab binary flag of read to distinguish start/end
+      if (!(iss >> token)) {
+        cout << "Could not process token in line: " << line;
+        continue;
+      }
+
+#ifdef DEBUG
+      cout << "Token:  " << token << endl;
+#endif
+
       // TODO error handling
-      value = stoull(clean);
+      value = stoull(clean + token);
 
 #ifdef DEBUG
       cout << "After:  " << value << endl;

@@ -76,8 +76,8 @@ int main (int argc, char** argv) {
         genes.insert(value);
       }
       else /* fileNo > 1 */ {
-        if (genes.count(value) >= 1) {
-	  cout << value << endl;
+        if (genes.count(value) < 1) {
+	  cout << line << endl;
 	}
       }
     }

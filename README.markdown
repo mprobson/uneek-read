@@ -1,5 +1,5 @@
 # Uneek
-`Uneek` is a simple C/C++ program that takes two read files as input and prints the unique reads in the second file.
+`Uneek` is a simple C++ program that takes two read files as input and prints the unique reads in the second file.
 
 ## Installation
 To install `uneek` 

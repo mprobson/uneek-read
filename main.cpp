@@ -40,6 +40,7 @@ int main (int argc, char** argv) {
       // TODO better name
       istringstream iss(line);
 
+      // Grab read location
       if (!(iss >> token)) {
         cout << "Could not process token in line: " << line;
         continue;
@@ -59,6 +60,7 @@ int main (int argc, char** argv) {
       cout << "During: " << clean << endl;
 #endif
 
+      // Remove :'s
       size_t pos = -1;
       while ((pos = clean.find(':')) != string::npos) {
         clean.erase(pos, 1);

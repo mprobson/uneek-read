@@ -40,6 +40,11 @@ int main (int argc, char** argv) {
       // TODO better name
       istringstream iss(line);
 
+      // Skip head lines
+      if (line[0] == '@') {
+        continue;
+      }
+
       // Grab read location
       if (!(iss >> token)) {
         cout << "Could not process token in line: " << line;

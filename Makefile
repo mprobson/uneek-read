@@ -1,15 +1,15 @@
 # http://stackoverflow.com/a/2481326
 # http://stackoverflow.com/a/1080180
 
-all: main
+all: uneek
 
 debug: CPPFLAGS+=-DDEBUG
-debug: main
+debug: uneek
 
-main: main.o
+uneek: main.o
 	$(CXX) $(LDFLAGS) -o $@ $^ $(LDLIBS)
 
 main.o: main.cpp
 
 clean:
-	rm -rf main main.o
+	rm -rf uneek main.o

@@ -11,7 +11,7 @@ using namespace std;
 int main (int argc, char** argv) {
   if (argc < 3) {
     // Should this be cerr?
-    cout << "You must supply two file names: ./pgm file1 file2" << endl;
+    cout << "You must supply two file names: ./uneek file1 file2" << endl;
     return 0;
   }
 

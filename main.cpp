@@ -10,8 +10,7 @@ using namespace std;
 
 int main (int argc, char** argv) {
   if (argc < 3) {
-    // Should this be cerr?
-    cout << "You must supply two file names: ./uneek file1 file2" << endl;
+    cerr << "You must supply two file names: ./uneek file1 file2" << endl;
     return 0;
   }
 
@@ -27,14 +26,13 @@ int main (int argc, char** argv) {
     file.open(argv[fileNo]);
 
     if (!file.is_open()) {
-      // Should this be cerr?
-      cout << "Unable to open file " << argv[fileNo] << endl;
+      cerr << "Unable to open file " << argv[fileNo] << endl;
       continue;
     }
 
     while (getline(file, line)) {
 #ifdef DEBUG
-      cout << "Line:   " << line << endl;
+      cerr << "Line:   " << line << endl;
 #endif
 
       // TODO better name
@@ -47,12 +45,12 @@ int main (int argc, char** argv) {
 
       // Grab read location
       if (!(iss >> token)) {
-        cout << "Could not process token in line: " << line;
+        cerr << "Could not process token in line: " << line;
         continue;
       }
 
 #ifdef DEBUG
-      cout << "Before: " << token << endl;
+      cerr << "Before: " << token << endl;
 #endif
 
       // concat
@@ -62,7 +60,7 @@ int main (int argc, char** argv) {
       clean = token.substr(14, end - 14);
 
 #ifdef DEBUG
-      cout << "During: " << clean << endl;
+      cerr << "During: " << clean << endl;
 #endif
 
       // Remove :'s
@@ -73,19 +71,19 @@ int main (int argc, char** argv) {
 
       // Grab binary flag of read to distinguish start/end
       if (!(iss >> token)) {
-        cout << "Could not process token in line: " << line;
+        cerr << "Could not process token in line: " << line;
         continue;
       }
 
 #ifdef DEBUG
-      cout << "Token:  " << token << endl;
+      cerr << "Token:  " << token << endl;
 #endif
 
       // TODO error handling
       value = stoull(clean + token);
 
 #ifdef DEBUG
-      cout << "After:  " << value << endl;
+      cerr << "After:  " << value << endl;
 #endif
 
       // add to set

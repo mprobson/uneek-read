@@ -1,5 +1,6 @@
 # http://stackoverflow.com/a/2481326
 # http://stackoverflow.com/a/1080180
+CXXFLAGS=-O3
 
 all: uneek
 

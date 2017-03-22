@@ -11,7 +11,7 @@ using namespace std;
 int main (int argc, char** argv) {
   if (argc < 3) {
     cerr << "You must supply two file names: ./uneek file1 file2" << endl;
-    return 0;
+    return 1;
   }
 
   // TODO construct on heap

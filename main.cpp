@@ -3,6 +3,7 @@
 #include <sstream>
 #include <string>
 #include <unordered_set>
+#include <algorithm>
 
 using namespace std;
 
@@ -64,10 +65,7 @@ int main (int argc, char** argv) {
 #endif
 
       // Remove :'s
-      size_t pos = -1;
-      while ((pos = clean.find(':')) != string::npos) {
-        clean.erase(pos, 1);
-      }
+      clean.erase(remove(clean.begin(), clean.end(), ':'), clean.end());
 
       // Grab binary flag of read to distinguish start/end
       if (!(iss >> token)) {

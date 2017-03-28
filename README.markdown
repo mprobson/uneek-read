@@ -45,4 +45,4 @@ Email: <mprobson@illinois.edu>
 Twitter: [@mprobson](https://twitter.com/mprobson)
 
 ## License
-GNU GPLv3
+GNU LGPLv3
